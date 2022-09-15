@@ -159,6 +159,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     RECT client_rect;
+    int temp_x = 0;
+    int temp_y = 0;
     switch (message)
     {
     case WM_COMMAND:
@@ -192,7 +194,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         break;
 
-    case WM_MOUSEMOVE:
+    /*case WM_MOUSEMOVE:
         
 
         x = LOWORD(lParam);
@@ -212,22 +214,62 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             InvalidateRect(hWnd, &client_rect, true);
         }
         break;
+        */
+    case WM_MOUSEMOVE:
+       temp_x = LOWORD(lParam);
+       temp_y = HIWORD(lParam);
+       if (x != temp_x || y != temp_y)
+       {
+          x = temp_x;
+          y = temp_y;
+          str = L"x: " + to_wstring(x) + L", y: " + to_wstring(y);
 
+          RECT min_area;
+          min_area.left = 0;
+          min_area.top = 0;
+          min_area.right = 100;
+          min_area.bottom = 30;
+
+          if (type == 1)
+          {
+             InvalidateRect(hWnd1, &min_area, true);
+             InvalidateRect(hWnd2, &min_area, true);
+          }
+          else
+          {
+             InvalidateRect(hWnd, &min_area, true);
+          }
+       }
+       break;
+
+
+       
+  
     case WM_PAINT:
         {
+            SetTimer(hWnd, 1, 100, NULL);
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
             HPEN pen = CreatePen(PS_SOLID, 5.0, color[hWnd]);
-                       
+            
+
             POINT point;
             GetClientRect(hWnd, &client_rect);
 
             SelectObject(hdc, pen);
-            MoveToEx(hdc, 0, 0, &point);
-            LineTo(hdc, client_rect.right, client_rect.bottom);
-            MoveToEx(hdc, 0, client_rect.bottom, &point);
-            LineTo(hdc, client_rect.right, 0);
+            int x = client_rect.right / 2;
+            int y = client_rect.bottom / 2;
+            double R = 0.4;
+            double Rt = 0.015;
+            Ellipse(hdc, x - R * y, y - R * y, x + R * y, y + R * y);
+            Ellipse(hdc, x - Rt * y, y - Rt * y, x + Rt * y, y + Rt * y);
+            // Ellipse(hdc, 444, 100, 668, 300);
+            MoveToEx(hdc, x, y, NULL);
+            LineTo(hdc, x, y - R * y);
+           
+            //MoveToEx(hdc, 0, client_rect.bottom, &point);
+           // LineTo(hdc, client_rect.right, 0);
             DeleteObject(pen);
 
             TextOut(hdc, 0, 0, str.c_str(), str.length());
@@ -235,6 +277,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             EndPaint(hWnd, &ps);
         }
         break;
+
+    case WM_TIMER:
+       //Вызов дилогового окна
+       MessageBox(hWnd, L"Остановишь меня?", L"Остановишь меня?", MB_OK);
+       break;
+    KillTimer(hWnd, 1); //"Убиваем" таймер
     case WM_DESTROY:
         PostQuitMessage(0);
         break;

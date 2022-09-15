@@ -1,5 +1,5 @@
 ﻿  WindowsProject1.cpp
-Z:\граф интерфейс 1\WindowsProject1\WindowsProject1\WindowsProject1.cpp(221,44): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-Z:\граф интерфейс 1\WindowsProject1\WindowsProject1\WindowsProject1.cpp(233,57): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-Z:\граф интерфейс 1\WindowsProject1\WindowsProject1\WindowsProject1.cpp(161,10): warning C4101: client_rect: неиспользованная локальная переменная
-  WindowsProject1.vcxproj -> Z:\граф интерфейс 1\WindowsProject1\x64\Debug\WindowsProject1.exe
+C:\Users\krave\source\WindowsProject1\WindowsProject1\WindowsProject1.cpp(251,44): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\krave\source\WindowsProject1\WindowsProject1\WindowsProject1.cpp(263,57): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\krave\source\WindowsProject1\WindowsProject1\WindowsProject1.cpp(161,10): warning C4101: client_rect: неиспользованная локальная переменная
+  WindowsProject1.vcxproj -> C:\Users\krave\source\WindowsProject1\x64\Debug\WindowsProject1.exe
