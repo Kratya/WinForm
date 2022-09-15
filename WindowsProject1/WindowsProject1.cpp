@@ -17,13 +17,14 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса глав�
 HWND hWnd2, hWnd1;
 
 std::map<HWND, COLORREF> color;
+std::map<HWND, wstring> text_coord;
+
 
 COLORREF color_green = RGB(0, 204, 102);
 COLORREF color_red = RGB(255, 0, 0);
-int x, y;
+int x = 0, y = 0;
 char buf[100];
 char buf2[100];
-wstring str;
 
 int type = 0; // 0 = a, 1 = b
 
@@ -123,6 +124,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    }
 
    color[hWnd1] = color_red;
+   text_coord[hWnd1] = L"x: " + to_wstring(x) + L", y: " + to_wstring(y);
 
    ShowWindow(hWnd1, nCmdShow);
    UpdateWindow(hWnd1);
@@ -137,6 +139,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    }
 
    color[hWnd2] = color_red;
+   text_coord[hWnd2] = L"x: " + to_wstring(x) + L", y: " + to_wstring(y);
 
    ShowWindow(hWnd2, nCmdShow);
    UpdateWindow(hWnd2);
@@ -159,6 +162,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     RECT client_rect;
+    int temp_x = 0;
+    int temp_y = 0;
     switch (message)
     {
     case WM_COMMAND:
@@ -173,6 +178,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;
+            case IDM_CHANGE_COORD:
+                 type = type == 0 ? 1 : 0;
             default:
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
@@ -193,23 +200,40 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
 
     case WM_MOUSEMOVE:
-        
+        temp_x = LOWORD(lParam);
+        temp_y = HIWORD(lParam);
+        if (x != temp_x || y != temp_y)
+        {
+            x = temp_x;
+            y = temp_y;
 
-        x = LOWORD(lParam);
-        y = HIWORD(lParam);
-        str = L"x: " + to_wstring(x) + L", y: " + to_wstring(y);
-        
-        if (type == 1)
-        {
-            GetClientRect(hWnd1, &client_rect);
-            InvalidateRect(hWnd1, &client_rect, true);
-            GetClientRect(hWnd2, &client_rect);
-            InvalidateRect(hWnd2, &client_rect, true);
-        }
-        else
-        {
-            InvalidateRect(hWnd, &client_rect, true);
-            InvalidateRect(hWnd, &client_rect, true);
+            RECT min_area;
+            min_area.left = 0;
+            min_area.top = 0;
+            min_area.right = 100;
+            min_area.bottom = 30;
+
+            if (type == 1)
+            {
+                text_coord[hWnd1] = L"x: " + to_wstring(x) + L", y: " + to_wstring(y);
+                text_coord[hWnd2] = L"x: " + to_wstring(x) + L", y: " + to_wstring(y);
+            }
+            else
+            {
+                if (hWnd == hWnd1)
+                {
+                    text_coord[hWnd1] = L"x: " + to_wstring(x) + L", y: " + to_wstring(y);
+                    text_coord[hWnd2] = L"x: 0, y: 0";
+                }
+                else
+                {
+                    text_coord[hWnd2] = L"x: " + to_wstring(x) + L", y: " + to_wstring(y);
+                    text_coord[hWnd1] = L"x: 0, y: 0";
+                }
+            }
+            InvalidateRect(hWnd1, &min_area, true);
+            InvalidateRect(hWnd2, &min_area, true);
+
         }
         break;
 
@@ -218,19 +242,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: Добавьте сюда любой код прорисовки, использующий HDC...
-            HPEN pen = CreatePen(PS_SOLID, 5.0, color[hWnd]);
-                       
+              
             POINT point;
             GetClientRect(hWnd, &client_rect);
 
-            SelectObject(hdc, pen);
+            HPEN pen = CreatePen(PS_SOLID, 5.0, color[hWnd]);
+            auto old_pen = SelectObject(hdc, pen);
             MoveToEx(hdc, 0, 0, &point);
             LineTo(hdc, client_rect.right, client_rect.bottom);
             MoveToEx(hdc, 0, client_rect.bottom, &point);
             LineTo(hdc, client_rect.right, 0);
+            SelectObject(hdc, old_pen);
             DeleteObject(pen);
 
-            TextOut(hdc, 0, 0, str.c_str(), str.length());
+            TextOut(hdc, 0, 0, text_coord[hWnd].c_str(), text_coord[hWnd].length());
 
             EndPaint(hWnd, &ps);
         }
