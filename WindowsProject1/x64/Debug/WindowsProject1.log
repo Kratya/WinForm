@@ -1,5 +1,25 @@
 ﻿  WindowsProject1.cpp
-L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(221,44): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(233,57): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(161,10): warning C4101: client_rect: неиспользованная локальная переменная
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(123,10): warning C4101: client_rect: неиспользованная локальная переменная
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(299,32): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(300,31): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(301,33): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(302,34): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(323,36): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(324,36): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(325,35): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(326,35): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(327,35): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(328,35): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(336,44): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(346,111): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(346,85): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(346,59): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(346,33): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(355,127): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(355,95): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(355,63): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(355,33): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(360,83): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(362,78): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+L:\Мое\Проги\мага 1.1 граф интерфейс 1\WindowsProject1\WindowsProject1.cpp(204,10): warning C4101: client_rect: неиспользованная локальная переменная
   WindowsProject1.vcxproj -> L:\Мое\Проги\мага 1.1 граф интерфейс 1\x64\Debug\WindowsProject1.exe
